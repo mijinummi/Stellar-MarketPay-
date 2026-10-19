@@ -782,3 +782,18 @@ const signedXdr = tx.toEnvelope().toXDR("base64");
 _For WebAuthn credential management see `backend/src/routes/webauthn.js`._
 _For 2FA enrollment see `backend/src/routes/twoFactor.js`._
 _For rate limiting configuration see `backend/src/middleware/rateLimiter.js`._
+
+
+## SEP-10 Authentication End-to-End Walkthrough & Runnable Examples
+
+Below is a complete, copy-pasteable guide for authenticating via SEP-10 against `backend/src/routes/auth.js`.
+
+---
+
+### Step 1: Request Challenge XDR
+
+Request an unsigned Stellar transaction challenge for your public key:
+
+```bash
+curl -X GET "http://localhost:3000/api/auth/challenge?account=GABCD123456789EXAMPLE_PUBLIC_KEY" \
+  -H "Accept: application/json"
