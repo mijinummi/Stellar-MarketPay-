@@ -1245,3 +1245,17 @@ If this guide doesn't resolve your issue:
 ---
 
 **Last Updated**: 2026-08-24
+
+## Database Migration Errors
+
+### Duplicate Migration Version Error (`V57`, `V58`, `V59`)
+
+#### Error Output
+When running database migrations during a fresh setup (`npm run migrate` in `backend/`), the migration runner exits abruptly with an error similar to:
+
+```text
+Error: Duplicate migration version detected: V57 is defined in multiple migration files (V57_add_escrow_indices.sql, V57_update_milestone_status.sql). Migration versions must be unique.
+    at MigrationRunner.validateVersions (/path/to/backend/src/db/migrate.js:42:15)
+    at runMigrations (/path/to/backend/src/db/migrate.js:88:28)
+
+    
